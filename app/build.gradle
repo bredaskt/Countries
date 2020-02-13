@@ -53,7 +53,7 @@ dependencies {
     implementation "com.google.dagger:dagger:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     implementation "com.google.dagger:dagger-compiler:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-processor:$daggerVersion"
+    api "com.google.dagger:dagger-android-processor:$daggerVersion"
 
     // recycler view
     implementation "com.android.support:recyclerview-v7:$supportVersion"
@@ -71,4 +71,5 @@ dependencies {
 
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
 }

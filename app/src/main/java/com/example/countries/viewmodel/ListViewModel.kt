@@ -6,7 +6,7 @@ import com.example.countries.model.Country
 
 class ListViewModel : ViewModel() {
 
-    val countries = MutableLiveData<List<Country>>()
+    val countries = MutableLiveData<List<Country?>>()
     val countriesLoadingError = MutableLiveData<Boolean>()
     val loading = MutableLiveData<Boolean>()
 
@@ -24,7 +24,6 @@ class ListViewModel : ViewModel() {
             Country("CountryG"),
             Country("CountryH"),
             Country("CountryI")
-
         )
 
         countriesLoadingError.value = false
