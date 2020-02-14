@@ -4,12 +4,15 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import rx.Single
+import javax.inject.Inject
 
-class CountriesServices {
+class CountriesService {
+
+    @Inject
+    var api : CountriesApi
 
     private val BASE_URL = "https://raw.githubusercontent.com"
-    private val api : CountriesApi
-
+    
     init {
         api = Retrofit.Builder()
             .baseUrl(BASE_URL)
