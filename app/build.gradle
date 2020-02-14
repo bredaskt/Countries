@@ -21,6 +21,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 def lifecycleVersion = '1.1.1'
@@ -30,7 +34,6 @@ def daggerVersion = '2.26'
 def glideVersion = '4.11.0'
 def mockitoVersion = '2.11.0'
 def rxJavaVersion = '2.2.0'
-def rxAndroidVersion = '2.1.1'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -46,14 +49,18 @@ dependencies {
 
     // rxjava
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
-    //implementation "io.reactivex.rxJava2:rxandroid:$rxAndroidVersion"
-
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
 
     // dagger 2
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-    implementation "com.google.dagger:dagger-compiler:$daggerVersion"
-    api "com.google.dagger:dagger-android-processor:$daggerVersion"
+    //implementation "com.google.dagger:dagger:$daggerVersion"
+    //implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    //implementation "com.google.dagger:dagger-compiler:$daggerVersion"
+    //api "com.google.dagger:dagger-android-processor:$daggerVersion"
+
+    compileOnly 'com.google.dagger:dagger:2.26'
+    // Adds the annotation processor dependency to the annotation processor classpath.
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.26'
+
 
     // recycler view
     implementation "com.android.support:recyclerview-v7:$supportVersion"
@@ -66,7 +73,7 @@ dependencies {
 
     testImplementation 'junit:junit:4.13'
 
-    // mockito
+    // mockito'
     testImplementation "org.mockito:mockito-inline:$mockitoVersion"
 
     androidTestImplementation 'androidx.test:runner:1.2.0'

@@ -32,22 +32,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
-        viewModel.countries.observe(this, Observer {
-            rvCountriesList?.let { countriesAdapter.updateCountries(it)}
+        viewModel.countries.observe(this, Observer { countries ->
+            countries?.let { countriesAdapter.updateCountries(it)}
         })
 
-        viewModel.countriesLoadingError.observe(this, Observer {
-            it?.let { listError.visibility = if (it) View.VISIBLE else View.GONE }
+        viewModel.countriesLoadingError.observe(this, Observer { isError ->
+            isError?.let { listError.visibility = if (it) View.VISIBLE else View.GONE }
         })
 
-        viewModel.loading.observe(this, Observer {
-            it?.let { loadingRvCountries.visibility = if (it) View.VISIBLE else View.GONE
+        viewModel.loading.observe(this, Observer { isLoading ->
+            isLoading?.let { loadingRvCountries.visibility = if (it) View.VISIBLE else View.GONE
                 if (it) {
                      listError.visibility = View.GONE
                      rvCountriesList.visibility = View.GONE
                 }
             }
-
         })
     }
 }
