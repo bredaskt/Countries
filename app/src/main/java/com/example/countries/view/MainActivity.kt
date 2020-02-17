@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewModel = ViewModelProviders.of(this).get(ListViewModel::class.java)
-
         viewModel.refresh()
 
         rvCountriesList.apply {
@@ -33,7 +32,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeViewModel() {
         viewModel.countries.observe(this, Observer { countries ->
-            countries?.let { countriesAdapter.updateCountries(it)}
+            countries?.let {
+                rvCountriesList.visibility = View.VISIBLE
+                countriesAdapter.updateCountries(it)}
         })
 
         viewModel.countriesLoadingError.observe(this, Observer { isError ->

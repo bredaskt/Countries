@@ -27,13 +27,13 @@ android {
     }
 }
 
-def lifecycleVersion = '1.1.1'
+def lifecycleExtensionsVersion = '1.1.1'
 def supportVersion = '28.0.0'
-def retrofitVersion = '2.7.1'
-def daggerVersion = '2.26'
-def glideVersion = '4.11.0'
+def retrofitVersion = '2.3.0'
+def daggerVersion = '2.13'
+def glideVersion = '4.8.0'
 def mockitoVersion = '2.11.0'
-def rxJavaVersion = '2.2.0'
+def rxJavaVersion = '2.0.1'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -45,22 +45,14 @@ dependencies {
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+
+    // dagger
+    implementation "com.google.dagger:dagger:$daggerVersion"
 
     // rxjava
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-
-    // dagger 2
-    //implementation "com.google.dagger:dagger:$daggerVersion"
-    //implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-    //implementation "com.google.dagger:dagger-compiler:$daggerVersion"
-    //api "com.google.dagger:dagger-android-processor:$daggerVersion"
-
-    implementation 'com.google.dagger:dagger:2.26'
-    // Adds the annotation processor dependency to the annotation processor classpath.
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.26'
-
+    implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
 
     // recycler view
     implementation "com.android.support:recyclerview-v7:$supportVersion"
@@ -69,13 +61,12 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glideVersion"
 
     // lyfecycle
-    implementation "android.arch.lifecycle:extensions:$lifecycleVersion"
-
-    testImplementation 'junit:junit:4.13'
+    implementation "android.arch.lifecycle:extensions:$lifecycleExtensionsVersion"
 
     // mockito'
     testImplementation "org.mockito:mockito-inline:$mockitoVersion"
 
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
