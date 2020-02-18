@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 class AppModule {
 
-    private val BASE_URL = "https://githubusercontent.com"
+    private val BASE_URL = "https://raw.githubusercontent.com"
 
     @Provides
     fun providesCountriesApi(): CountriesApi {
