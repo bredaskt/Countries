@@ -37,7 +37,7 @@ class CountryListAdapter(var countries: ArrayList<Country>):
         fun bind(country: Country) {
             countryName.text = country.countryName
             countryCapital.text = country.capital
-            imageView.loadImage(country.flagPng, progressDrawable)
+            imageView.loadImage(country.flagPNG, progressDrawable)
         }
     }
 
